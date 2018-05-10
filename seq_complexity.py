@@ -40,8 +40,17 @@ def main(args):
 
 		seq.createPandasDataFrame().to_csv(species + '/table.csv')
 
+		uniqueBases = set(sequence)
+		atgcBases = {'A', 'C', 'G', 'T'}
+
 		lcFile = open(os.path.join(species, species + "_linquistic_complexity.txt"), 'w')
-		lcFile.write(str(seq.linguisticComplexity()))
+		lcFile.write(str(seq.linguisticComplexity()) + '\n')
+		lcFile.write('The bases in this sequence are ')
+		for base in uniqueBases:
+			lcFile.write(str(base) + ' ')
+		lcFile.write('\n')
+		if not uniqueBases.issubset(atgcBases):
+			lcFile.write('Warning: There is a base other than ATGC in this sequence.')
 		lcFile.close()
 
 		line = line + 3
