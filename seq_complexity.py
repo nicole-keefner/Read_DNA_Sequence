@@ -50,7 +50,7 @@ def main(args):
 			lcFile.write(str(base) + ' ')
 		lcFile.write('\n')
 		if not uniqueBases.issubset(atgcBases):
-			lcFile.write('Warning: There is a base other than ATGC in this sequence.')
+			lcFile.write('Warning: There is a base other than ATGC in this sequence. This means that observed kmers may exceed possible kmers.')
 		lcFile.close()
 
 		line = line + 3
